@@ -1,0 +1,229 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@900&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chango&display=swap");
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+  overflow: clip;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.zigzag {
+  position: relative;
+  color: #fff;
+  margin-bottom: 100px;
+  transform-style: preserve-3d;
+  animation: zigzag 16s infinite linear;
+
+  i {
+    --color: hsl(200 100% calc(var(--i) * 5% + 20%));
+    position: absolute;
+    font-family: "Prompt", sans-serif;
+    font-weight: 900;
+    font-size: 150px;
+    padding-inline: 24px;
+    background-image: linear-gradient(
+        45deg,
+        transparent 30%,
+        var(--color) 0 36%,
+        transparent 0
+      ),
+      linear-gradient(
+        -45deg,
+        transparent 30%,
+        var(--color) 0 36%,
+        transparent 0
+      );
+    background-size: 16px 8px;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    transform: translate3d(-50%, -50%, calc(var(--i) * 1px));
+  }
+}
+
+@keyframes zigzag {
+  from {
+    transform: rotate(0deg) rotateX(30deg) rotate(360deg);
+  }
+  to {
+    transform: rotate(360deg) rotateX(30deg) rotate(0deg);
+  }
+}
+
+.container {
+  color: #fff;
+  font-family: "Chango", cursive;
+  filter: url("#effect");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.acid {
+  font-size: 3vw;
+  letter-spacing: 10px;
+  border: 3vw solid;
+  padding: 4vw 5vw;
+  animation: spin 3s ease-in-out alternate infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(-12deg);
+  }
+  100% {
+    transform: rotate(12deg);
+  }
+}
+
+article {
+  font-family: "Indie Flower", "Patrick Hand SC", "Comic Neue", "Comic Sans",
+    "Comic Sans MS", Helvetica, Arial, sans-serif;
+  font-size: 5vmin;
+  background: white;
+  color: black;
+  padding: 2em 2em 2em 3em;
+  width: 100vmin;
+  height: 110vmin;
+
+  border-radius: 0.05em;
+  box-shadow: 0.1em 0.1em #ddd, 0.065em 0.05em #fff, 0.15em 0.15em #bbb,
+    0.125em 0 0 0.15em #333, 0.25em 0.125em 0 0.15em #000;
+  transform: rotate(3deg) translate(5%, 5%);
+  transform-origin: 10% 10%;
+  position: relative;
+  filter: drop-shadow(-0.25vmin 0.1em 0.35vmin #0002)
+    drop-shadow(1vmin 0 1vmin #0003);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -1em;
+    width: 1.5em;
+    height: 100%;
+    background: linear-gradient(#0000 0.225em, #999 0 0.375em, #0000 0) 80% 0 /
+        68% 3vmin repeat-y,
+      linear-gradient(25deg, #0000 0.225em, #666 0 0.35em, #0000 0) 44% 0.1% /
+        40% 3vmin repeat-y,
+      radial-gradient(circle at 0.4em 50%, #999 0.075em, #0000 0.085em) 0 0 /
+        100% 3vmin repeat-y,
+      radial-gradient(circle at 1.4em 50%, #999 0.075em, #0000 0.085em) 0 0 /
+        100% 3vmin repeat-y,
+      #f000;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -1em;
+    width: 1.5em;
+    height: 100%;
+    background: linear-gradient(#0000 0.225em, #fff7 0 0.375em, #0000 0) 80% 0 /
+      68% 3vmin repeat-y;
+    mask: linear-gradient(90deg, #0000 0.4em, #000 0.6em, #0000 1.2em),
+      linear-gradient(#0000 0.225em, #fff7 0.28em 0.3em, #0000 0.375em) 80% 0 /
+        68% 3vmin repeat-y;
+    mask-composite: intersect;
+  }
+}
+
+h2 {
+  margin: 0;
+  font-size: 6.5vmin;
+  white-space: pre;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 95%;
+    height: 100%;
+    background: #f003;
+    background: radial-gradient(
+      175% 100% at 50% 100%,
+      #0000 50%,
+      #000 51% 55%,
+      #0000 56%
+    );
+    left: -1%;
+    top: 25%;
+    transform: rotate(0.25deg);
+  }
+}
+
+del {
+  text-decoration-color: #f00c;
+}
+
+u {
+  text-decoration: none;
+  transform: rotate(-2deg) skew(-2deg);
+  position: relative;
+  display: inline-block;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 95%;
+    height: 100%;
+    background: #f003;
+    background: radial-gradient(
+      195% 100% at 50% 100%,
+      #0000 50%,
+      #000 51% 55%,
+      #0000 56%
+    );
+    left: -1%;
+    top: 30%;
+    transform: rotate(0.25deg);
+  }
+
+  &::before {
+    transform: rotate(1.5deg);
+    left: 2%;
+    top: 40%;
+  }
+}
+
+ol {
+  line-height: 5.4vmin;
+  margin-top: 4.25vmin;
+}
+
+a {
+  color: #64b5f6; /* Light blue color for default state */
+  text-decoration: none; /* Removes underline */
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+a:hover {
+  color: #ff7f50; /* Coral color for hover state */
+}
+
+.discord-link {
+  color: #7289da; /* Discord's brand color */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.discord-link:hover {
+  color: #5865f2; /* A slightly darker shade for hover */
+}
